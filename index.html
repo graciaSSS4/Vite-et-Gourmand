@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="scss/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Vite & Gourmand (déploiement continu)</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/menu">Nos menus</a>
+              </li>
+              <li class="nav-item" data-show="disconnected">
+                <a class="nav-link" href="/signin">Se connecter / S'inscrire</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Nous contacter</a>
+              </li>
+              <li class="nav-item" data-show="connected">
+                <button class="nav-link" id="btnSignout">Déconnexion</button>
+              </li>
+              <li class="nav-item" data-show="connected">
+                <button class="nav-link" id="btnAccount">Mon compte</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-page">
+      <!--Le contenu de la page sera injecté ici par js-->
+    </main>
+
+    <footer class="bg-dark text-white text-center footer">
+      <div class="row">
+        <div class="col-12 col-lg-4">
+          <h3 class="text-primary">Nos horaires</h3>
+          <p>Du lundi au dimanche de 11h30 à 14h30 et de 18h00 à 23h00</p>
+        </div>
+        <div class="col-6 col-lg-4">
+          <p>
+            Vite & Gourmand <br />
+            11 Rue de la Nourri <br />
+            33000 Bordeaux <br />
+            04 01 01 01 01 <br />
+          </p>
+        </div>
+        <div class="col-6 col-lg-4">
+          <p>contact@viteandgourmand.com</p>
+        </div>
+        <div class="col-6 col-lg-4">
+          <p>Suivez-nous</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script type="module" src="Router/Router.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
