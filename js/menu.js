@@ -1,12 +1,32 @@
-const galerieImage = document.getElementById("allImages");
-let monImage = getImage("titre", "../Image/IMAGE_quai-antique-images_2026-07-18_1108/fresh vegetables.jpg");
+const menusList = document.getElementById("allCards");
+let content = "";
 
-// Récupérer les informations des images
-let titre;
-let imgSources;
+// Toutes les informations nécessaires
+const menu = [
+  {
+    // Toutes les informations nécessaires
+    title: "Menu de Noël",
+    text: "Ecrire ici la Description du menu.",
+    nbPersonne: 6,
+    prix: 150,
+    image: "../images_VandG/chicken-plate.jpg",
+  },
+  {
+    title: "Menu de évènement",
+    text: "Ecrire ici la Description du menu.",
+    nbPersonne: 4,
+    prix: 100,
+    image: "../images_VandG/entrecote-plate.jpg",
+  },
+];
 
-galerieImage.innerHTML = monImage;
+// Cars' chain assembly
+for (const menu of menus) {
+  content += getMenu(menu);
+}
+menusList.innerHTML = contenu;
 
+// Security : neutralise tous HTML malveillant
 function sanitizeHtml(text) {
   // Créez un élément HTML temporaire de type "div"
   const tempHtml = document.createElement("div");
@@ -19,20 +39,20 @@ function sanitizeHtml(text) {
   return tempHtml.innerHTML;
 }
 
-function getImage(titre, urlImage) {
-  titre = sanitizeHtml(titre);
-  urlImage = sanitizeHtml(urlImage);
+//
+function getMenu(menu) {
+  const title = sanitizeHtml(menu.title);
+  const text = sanitizeHtml(menu.text);
+  const image = sanitizeHtml(menu.image);
+
   return ` <div class="col p-3">
-      <div class="image-card text-white">
-        <img src="${urlImage}" class="rounded w-100" />
-        <p class="titre-image">${titre}</p>
-        <div class="action-image-buttons" data-show="admin">
-          <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-          <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#DeletePhotoModal">
-            <i class="bi bi-trash"></i>
-          </button>
+        <div class="card menu-card h-100">
+        <img src="${image}" class="card-img-top" alt="${title}" />
+        <div class="card-body d-flex flex-column text-center">
+          <h5 class="card-title">${title}</h5>
+          <p class="card-text text-justify">${text}</p>
+          <p class="fw-bold">${menu.nbPersonne} pers. min · ${menu.prix} €</p>
+          <a href="#" class="btn btn-primary mt-auto">Voir le détail</a>
         </div>
       </div>
     </div> `;
