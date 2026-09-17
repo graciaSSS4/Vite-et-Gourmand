@@ -2,7 +2,7 @@ const menusList = document.getElementById("allCards");
 let content = "";
 
 // Toutes les informations nécessaires
-const menu = [
+const menus = [
   {
     // Toutes les informations nécessaires
     title: "Menu de Noël",
@@ -12,7 +12,7 @@ const menu = [
     image: "../images_VandG/chicken-plate.jpg",
   },
   {
-    title: "Menu de évènement",
+    title: "Menu d'évènement",
     text: "Ecrire ici la Description du menu.",
     nbPersonne: 4,
     prix: 100,
@@ -24,7 +24,7 @@ const menu = [
 for (const menu of menus) {
   content += getMenu(menu);
 }
-menusList.innerHTML = contenu;
+menusList.innerHTML = content;
 
 // Security : neutralise tous HTML malveillant
 function sanitizeHtml(text) {
@@ -51,7 +51,7 @@ function getMenu(menu) {
         <div class="card-body d-flex flex-column text-center">
           <h5 class="card-title">${title}</h5>
           <p class="card-text text-justify">${text}</p>
-          <p class="fw-bold">${menu.nbPersonne} pers. min · ${menu.prix} €</p>
+          <p class="fw-bold">${menu.nbPersonne} pers. min | ${menu.prix} €</p>
           <a href="#" class="btn btn-primary mt-auto">Voir le détail</a>
         </div>
       </div>

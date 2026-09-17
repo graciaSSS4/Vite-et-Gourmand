@@ -11,6 +11,8 @@ export const allRoutes = [
   new Route("/editPassword", "Changement de mot de passe", "pages/auth/editPassword.html", ["client", "admin"]),
   new Route("/allcommand", "Vos commandes", "pages/commandes/allcommand.html", ["client"]),
   new Route("/commander", "Commander", "pages/commandes/commander.html", ["client"]),
+  new Route("/mlegals", "Mentions légales", "pages/legal/legalment.html", []),
+  new Route("/cgv", "CGV", "pages/legal/cgv.html", []),
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename

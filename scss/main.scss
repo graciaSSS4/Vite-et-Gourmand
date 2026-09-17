@@ -6,15 +6,17 @@ html {
   min-height: 100%;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 main {
-  margin-bottom: 300px;
+  flex-grow: 1;
 }
 
 footer.footer {
   padding: 15px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 p {
@@ -54,6 +56,9 @@ p {
 
 .text-justify {
   text-align: justify;
+}
+.text-left {
+  text-align: left;
 }
 
 .image-card {
