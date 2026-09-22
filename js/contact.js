@@ -1,8 +1,19 @@
-(function() {
+(function () {
+  const inputTitle = document.getElementById("TitleInput");
+  const inputDescription = document.getElementById("DescriptionInput");
+  const inputMail = document.getElementById("EmailInput");
+  const btnContact = document.getElementById("btn-Validation-Contact");
+  const formContact = document.getElementById("formulaireContact");
 
-    const inputNom = document.getElementById("TitleInput");
-const inputNom = document.getElementById("DescriptionInput");
-const inputMail = document.getElementById("EmailInput");
+  inputTitle.addEventListener("keyup", validateForm);
+  inputDescription.addEventListener("keyup", validateForm);
+  inputMail.addEventListener("keyup", validateForm);
+
+  // Fonction pour gérer les événements de routage (clic sur les liens)
+  formContact.addEventListener("submit", (event) => {
+    event.preventDefault();
+    CheckContact();
+  });
 
   //Function permettant de vérifier le format du mail
 
@@ -36,24 +47,27 @@ const inputMail = document.getElementById("EmailInput");
     }
   }
 
-  // Fonction pour gérer les événements de routage (clic sur les liens)
-myForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-});
-//Implémenter une javascript de ma page
+  //Function permettant de valider tout le formulaire
+  function validateForm() {
+    const titleOK = validateRequired(inputTitle);
+    const descriptionOK = validateRequired(inputDescription);
+    const mailOK = validateMail(inputMail); //appel à la vérification du mail au bon format
 
-(function () {
-  const inputEmail = document.getElementById("EmailInput");
-  const inputPassword = document.getElementById("PasswordInput");
-  const btnSingin = document.getElementById("btnSingin");
-  const signinForm = document.getElementById("signinForm");
+    if (titleOK && descriptionOK && mailOK) // si les 3 éléments sont ok alors enable btncontact//
+    {
+      btnContact.disabled = false;
+      return true;
+    } else {
+      btnContact.disabled = true;
+      return false;
+    }
+  }
 
-  btnSingin.addEventListener("click", checkCredentials);
-
-  function checkCredentials() {
+  //Implémenter une javascript de ma page
+  function CheckContact() {
     //Ici, il faudra appeler l'API pour vérifier les credentials en BDD
     //Crée un nouvel objet FormData à partir du formulaire contenu dans la variable "formInscription"
-    const dataForm = new FormData(signinForm);
+    const dataForm = new FormData(formContact);
 
     // Crée un nouvel objet Headers pour définir les en-têtes de la requête HTTP
     const myHeaders = new Headers();
@@ -63,7 +77,6 @@ myForm.addEventListener("submit", (event) => {
     // Convertit les données du formulaire en une chaîne JSON
     const raw = JSON.stringify({
       username: dataForm.get("Email"),
-      password: dataForm.get("Password"),
     });
 
     // Configure les options de la requête HTTP
@@ -74,26 +87,19 @@ myForm.addEventListener("submit", (event) => {
       redirect: "follow",
     };
 
-    fetch(apiUrl + "login", requestOptions)
+    fetch(apiUrl, requestOptions)
       .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          inputEmail.classList.add("is-invalid");
-          inputPassword.classList.add("is-invalid"); // red
+          inputMail.classList.add("is-invalid"); // red
         }
       })
-
+      //excution fléchée pour plusieurs lignes
       .then((result) => {
-        //Il faudra récupérer le vrai token
-        const token = result.apiToken;
-        setToken(token);
-
-        //placer ce token en cookie
-        setCookie(roleCookieName, result.roles[0], 7);
-        window.location.replace("/");
+        alert("Votre message a bien été envoyé!");
+        document.location.href = "/";
       })
       .catch((error) => console.error(error));
   }
-}
 })();
