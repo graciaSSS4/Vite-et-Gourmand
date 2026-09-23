@@ -1,5 +1,6 @@
 const menusList = document.getElementById("allCards");
 let content = "";
+const filtMenu = document.getElementById("menuFilter");
 
 // Toutes les informations nécessaires
 const menus = [
@@ -57,3 +58,10 @@ function getMenu(menu) {
       </div>
     </div> `;
 }
+
+// Filters
+filtMenu.addEventListener("change", () => {
+  const filtered = menus.filter((menu) => menu.nbPersonne <= nbChoisi);
+
+  console.log(filtered);
+});
