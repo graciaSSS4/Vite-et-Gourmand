@@ -60,8 +60,21 @@ function getMenu(menu) {
 }
 
 // Filters
-filtMenu.addEventListener("change", () => {
-  const filtered = menus.filter((menu) => menu.nbPersonne <= nbChoisi);
+// La boucle d'affichage devient une FONCTION réutilisable
+function showMenus(liste) {
+  let content = "";
+  for (const menu of liste) {
+    content += getMenu(menu);
+  }
+  menusList.innerHTML = content;
+}
 
-  console.log(filtered);
+// Au chargement : on affiche tous les menus
+afficherMenus(menus);
+
+// On utilise le filtre nb personnes
+filtMenu.addEventListener("change", () => {
+  const nbFiltered = Number(filtMenu.value);
+  const menusFiltered = menus.filter((menu) => menu.nbPersonne <= nbFiltered);
+  afficherMenus(menusFiltered);
 });
