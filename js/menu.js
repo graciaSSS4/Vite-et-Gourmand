@@ -70,7 +70,7 @@ function showMenus(liste) {
 }
 
 // Au chargement : on affiche tous les menus
-afficherMenus(menus);
+showMenus(menus);
 
 // On utilise le filtre nb personnes
 filtMenu.addEventListener("change", () => {
