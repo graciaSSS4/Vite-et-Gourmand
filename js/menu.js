@@ -1,6 +1,7 @@
 const menusList = document.getElementById("allCards");
 let content = "";
-const filtMenu = document.getElementById("menuFilter");
+const filtMenu = document.getElementById("selectNbp");
+const filtPrice = document.getElementById("selectPrice");
 
 // Toutes les informations nécessaires
 const menus = [
@@ -76,5 +77,12 @@ showMenus(menus);
 filtMenu.addEventListener("change", () => {
   const nbFiltered = Number(filtMenu.value);
   const menusFiltered = menus.filter((menu) => menu.nbPersonne <= nbFiltered);
-  afficherMenus(menusFiltered);
+  showMenus(menusFiltered);
+});
+
+// On utilise le filtre prix
+filtPrice.addEventListener("change", () => {
+  const prFiltered = Number(filtPrice.value);
+  const priceFiltered = menus.filter((menu) => menu.prix <= prFiltered);
+  showMenus(priceFiltered);
 });
