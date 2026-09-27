@@ -2,6 +2,10 @@ const menusList = document.getElementById("allCards");
 let content = "";
 const filtMenu = document.getElementById("selectNbp");
 const filtPrice = document.getElementById("selectPrice");
+const filtTheme = document.getElementById("selectTheme");
+const filtRegime = document.getElementById("selectRegime");
+const filtMin = document.getElementById("selectPrmin");
+const filtMax = document.getElementById("selectPrmax");
 
 // Toutes les informations nécessaires
 const menus = [
@@ -9,6 +13,8 @@ const menus = [
     // Toutes les informations nécessaires
     title: "Menu de Noël",
     text: "Ecrire ici la Description du menu.",
+    theme: "Noël",
+    regime: "Sans lactose",
     nbPersonne: 6,
     prix: 150,
     image: "../images_VandG/chicken-plate.jpg",
@@ -16,6 +22,8 @@ const menus = [
   {
     title: "Menu d'évènement",
     text: "Ecrire ici la Description du menu.",
+    theme: "Événement",
+    regime: "Classique",
     nbPersonne: 4,
     prix: 100,
     image: "../images_VandG/entrecote-plate.jpg",
@@ -46,6 +54,8 @@ function getMenu(menu) {
   const title = sanitizeHtml(menu.title);
   const text = sanitizeHtml(menu.text);
   const image = sanitizeHtml(menu.image);
+  const theme = sanitizeHtml(menu.theme);
+  const regime = sanitizeHtml(menu.regime);
 
   return ` <div class="col p-3">
         <div class="card menu-card h-100">
@@ -53,6 +63,8 @@ function getMenu(menu) {
         <div class="card-body d-flex flex-column text-center">
           <h5 class="card-title">${title}</h5>
           <p class="card-text text-justify">${text}</p>
+          <p class="card-text text-justify">Thème : ${theme}</p>
+          <p class="card-text text-justify">Régime : ${regime}</p>
           <p class="fw-bold">${menu.nbPersonne} pers. min | ${menu.prix} €</p>
           <a href="#" class="btn btn-primary mt-auto">Voir le détail</a>
         </div>
@@ -61,7 +73,7 @@ function getMenu(menu) {
 }
 
 // Filters
-// La boucle d'affichage devient une FONCTION réutilisable
+// La boucle d'affichage
 function showMenus(liste) {
   let content = "";
   for (const menu of liste) {
@@ -70,19 +82,31 @@ function showMenus(liste) {
   menusList.innerHTML = content;
 }
 
-// Au chargement : on affiche tous les menus
-showMenus(menus);
-
-// On utilise le filtre nb personnes
-filtMenu.addEventListener("change", () => {
+// Function permettant d'appliquer tous les filtres
+function allFilters() {
   const nbFiltered = Number(filtMenu.value);
-  const menusFiltered = menus.filter((menu) => menu.nbPersonne <= nbFiltered);
-  showMenus(menusFiltered);
-});
-
-// On utilise le filtre prix
-filtPrice.addEventListener("change", () => {
   const prFiltered = Number(filtPrice.value);
-  const priceFiltered = menus.filter((menu) => menu.prix <= prFiltered);
-  showMenus(priceFiltered);
-});
+  const thFiltered = filtTheme.value;
+  const regFiltered = filtRegime.value;
+  // les || affiche tout de même les menus si aucune valeur n'est inscrite dans la fourchette
+  const prminFiltered = Number(filtMin.value) || 0;
+  const prmaxFiltered = Number(filtMax.value) || Infinity;
+  const menusFiltered = menus.filter(
+    (menu) =>
+      menu.nbPersonne <= nbFiltered &&
+      menu.prix <= prFiltered &&
+      menu.theme === thFiltered &&
+      menu.regime === regFiltered &&
+      menu.prix >= prminFiltered &&
+      menu.prix <= prmaxFiltered,
+  );
+
+  // Au chargement : on affiche les menus filtrés
+  showMenus(menusFiltered);
+}
+filtMenu.addEventListener("change", allFilters);
+filtPrice.addEventListener("change", allFilters);
+filtTheme.addEventListener("change", allFilters);
+filtRegime.addEventListener("change", allFilters);
+filtMin.addEventListener("input", allFilters);
+filtMax.addEventListener("input", allFilters);
