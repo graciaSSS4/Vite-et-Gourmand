@@ -175,6 +175,8 @@
   }
 
   // SIGN IN
+  const inputEmailSignin = document.getElementById("EmailInput");
+  const inputPasswordSignin = document.getElementById("PasswordInput");
   const btnSingin = document.getElementById("btnSingin");
   const signinForm = document.getElementById("signinForm");
 
@@ -209,8 +211,8 @@
         if (response.ok) {
           return response.json();
         } else {
-          inputEmail.classList.add("is-invalid");
-          inputPassword.classList.add("is-invalid"); // red
+          inputEmailSignin.classList.add("is-invalid");
+          inputPasswordSignin.classList.add("is-invalid"); // red
         }
       })
 
