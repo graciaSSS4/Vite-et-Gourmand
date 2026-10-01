@@ -31,9 +31,9 @@ const menus = [
 ];
 
 // Cars' chain assembly
-for (const menu of menus) {
-  content += getMenu(menu);
-}
+menus.forEach((menu, index) => {
+  content += getMenu(menu, index);
+});
 menusList.innerHTML = content;
 
 // Security : neutralise tous HTML malveillant
@@ -50,7 +50,7 @@ function sanitizeHtml(text) {
 }
 
 //
-function getMenu(menu) {
+function getMenu(menu, index) {
   const title = sanitizeHtml(menu.title);
   const text = sanitizeHtml(menu.text);
   const image = sanitizeHtml(menu.image);
@@ -66,7 +66,7 @@ function getMenu(menu) {
           <p class="card-text text-justify">Thème : ${theme}</p>
           <p class="card-text text-justify">Régime : ${regime}</p>
           <p class="fw-bold">${menu.nbPersonne} pers. min | ${menu.prix} €</p>
-          <a href="#" class="btn btn-primary mt-auto">Voir le détail</a>
+          <a href="detailmenu?onlyMenu=${index}" class="btn btn-primary mt-auto">Voir le détail</a>
         </div>
       </div>
     </div> `;
@@ -76,9 +76,9 @@ function getMenu(menu) {
 // La boucle d'affichage
 function showMenus(liste) {
   let content = "";
-  for (const menu of liste) {
-    content += getMenu(menu);
-  }
+  liste.forEach((menu, index) => {
+    content += getMenu(menu, index);
+  });
   menusList.innerHTML = content;
 }
 

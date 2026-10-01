@@ -138,3 +138,6 @@ function getInfoUser() {
       console.error("Erreur lors de la récupération des données utilisateur", error);
     });
 }
+// Test for dev
+setCookie("accesstoken", "test", 30);
+setCookie("role", "client", 30);
