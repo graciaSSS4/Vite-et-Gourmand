@@ -10,7 +10,7 @@ export const allRoutes = [
   new Route("/account", "Mon compte", "pages/auth/account.html", []),
   new Route("/editPassword", "Changement de mot de passe", "pages/auth/editPassword.html", []),
   new Route("/allcommand", "Vos commandes", "pages/commandes/allcommand.html", []),
-  new Route("/commander", "Commander", "pages/commandes/commander.html", []),
+  new Route("/commander", "Commander", "pages/commandes/commander.html", [], "/js/commandes/commander.js"),
   new Route("/mlegals", "Mentions légales", "pages/legal/legalment.html", []),
   new Route("/cgv", "CGV", "pages/legal/cgv.html", []),
 ];
