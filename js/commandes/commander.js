@@ -9,6 +9,7 @@
   const inputDate = document.getElementById("DateInput");
   const inputHeure = document.getElementById("selectHour");
   const inputNbPersonne = document.getElementById("nbPersonne");
+  const inputCity = document.getElementById("CityInput");
 
   btnCommander.addEventListener("click", validateCommand);
 
@@ -35,12 +36,37 @@
     </div>
     </div> `;
 
-  inputNbPersonne.addEventListener("input", () => {
+  function finalPrice() {
+    // les champs
     const nbPersonne = Number(inputNbPersonne.value);
     const totalMenu = menu.prixPersonne * nbPersonne;
 
-    recapchosenPrix.innerHTML = `Prix Menu : ${totalMenu} €`;
-  });
+    // Réduction 10%
+    let reduction = 0;
+    if (nbPersonne >= menu.nbPersonne + 5) {
+      reduction = totalMenu * 0.1;
+    }
+    const reducPrice = totalMenu - reduction;
+
+    // Livraison
+    const deliveryCity = inputCity.value.trim().toLowerCase();
+    let delivery = 0;
+    if (deliveryCity !== "bordeaux" && deliveryCity !== "") {
+      delivery = 5;
+    }
+    const totalMenuPrice = reducPrice + delivery;
+
+    // Affichage du bloc price
+    recapchosenPrix.innerHTML = `
+    Sous-total : ${totalMenu} €
+    ${reduction > 0 ? `Réduction de 10% : -${reduction.toFixed(2)} €` : ""}
+    ${delivery > 0 ? `Livraison hors Bordeaux : +${delivery.toFixed(2)} €` : ""}
+    Total Menu : ${totalMenuPrice.toFixed(2)}
+
+    `;
+  }
+  inputNbPersonne.addEventListener("input", finalPrice);
+  inputCity.addEventListener("input", finalPrice);
 
   function validateCommand() {
     const adressOK = validateRequired(inputAdress);
