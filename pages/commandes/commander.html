@@ -3,107 +3,100 @@
     <h1>Commander votre menu</h1>
   </div>
 </div>
+<form id="FormulaireCommand">
+  <section>
+    <h2 class="text-center text-primary fw-bold">Vos informations personnelles</h2>
 
-<section>
-  <h2 class="text-center text-primary fw-bold">Vos informations personnelles</h2>
-
-  <div class="mb-3">
-    <form>
-      <label for="prenom" class="form-label">foPrénom :</label>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prénom </label>
       <input type="text" class="form-control" id="prenom" name="prenom" value="" readonly />
-    </form>
-  </div>
-  <div class="mb-3">
-    <form>
-      <label for="nom" class="form-label">Nom :</label>
-      <input type="text" id="nom" name="prenom" value="" readonly />
-    </form>
-  </div>
-  <div class="mb-3">
-    <form>
-      <label for="email" class="form-label">Email :</label>
-      <input type="text" id="email" name="email" value="" readonly />
-    </form>
-  </div>
-  <div class="mb-3">
-    <form>
-      <label for="phone" class="form-label">Numéro de téléphone :</label>
-      <input type="text" id="phone" name="phone" value="" readonly />
-    </form>
-  </div>
-</section>
+    </div>
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom </label>
+      <input type="text" class="form-control" id="nom" name="nom" value="" readonly />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email </label>
+      <input type="text" class="form-control" id="email" name="email" value="" readonly />
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Numéro de téléphone </label>
+      <input type="text" class="form-control" id="phone" name="phone" value="" readonly />
+    </div>
+  </section>
 
-<section>
-  <h2 class="text-center text-primary fw-bold">Livraison</h2>
+  <section>
+    <h2 class="text-center text-primary fw-bold">Livraison</h2>
 
-  <div class="mb-3">
-    <label for="AdressInput" class="form-label">Adresse complète</label>
-    <input type="text" class="form-control" id="AdressInput" placeholder="Numéro et nom de rue" name="adress" />
-    <div class="invalid-feedback">L'adresse est requis</div>
+    <div class="mb-3">
+      <label for="AdressInput" class="form-label">Adresse complète</label>
+      <input type="text" class="form-control" id="AdressInput" placeholder="Numéro et nom de rue" name="adress" />
+      <div class="invalid-feedback">L'adresse est requis</div>
+    </div>
+    <div class="mb-3">
+      <label for="AdresscomplInput" class="form-label">Complément d'adresse</label>
+      <input type="text" class="form-control" id="AdresscomplInput" placeholder="App, Bât, Esc, Lieu-dit..." name="adresscompl" />
+    </div>
+    <div class="mb-3">
+      <label for="CodepInput" class="form-label">Code postal</label>
+      <input type="text" class="form-control" id="CodepInput" placeholder="75 001" name="code" />
+      <div class="invalid-feedback">Le code postal est requis</div>
+    </div>
+    <div class="mb-3">
+      <label for="CityInput" class="form-label">Ville</label>
+      <input type="text" class="form-control" id="CityInput" placeholder="Ville" name="city" />
+      <div class="invalid-feedback">La ville est requis</div>
+    </div>
+    <div class="mb-3">
+      <label for="DateInput" class="form-label">Date</label>
+      <input type="date" class="form-control" id="DateInput" placeholder="jj/mm/aaaa" value="jj/mm/aaaa" name="date" />
+    </div>
+    <div class="mb-3">
+      <label for="selectHour" class="form-label">Heure Midi</label>
+      <select class="form-select" id="selectHour" name="heureM">
+        <option>11:30</option>
+        <option>12:00</option>
+        <option>12:30</option>
+        <option>13:00</option>
+        <option>13:30</option>
+        <option>14:00</option>
+        <option>14:30</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="selectHourS" class="form-label">Heure Soir</label>
+      <select class="form-select" id="selectHourS" name="heureS">
+        <option>18:00</option>
+        <option>18:30</option>
+        <option>19:00</option>
+        <option>19:30</option>
+        <option>20:00</option>
+        <option>20:30</option>
+        <option>21:00</option>
+        <option>21:30</option>
+        <option>22:00</option>
+        <option>22:30</option>
+        <option>23:00</option>
+      </select>
+    </div>
+  </section>
+  <section>
+    <h2 class="text-center text-primary fw-bold">Votre menu</h2>
+    <div id="chosenMenu"></div>
+  </section>
+  <section>
+    <h2 class="text-center text-primary fw-bold">Ajouter un produit</h2>
+  </section>
+  <section>
+    <h2 class="text-center text-primary fw-bold">Votre récapitulatif</h2>
+    <div class="mb-3">
+      <label for="nbPersonne" class="form-label">Nombre de personnes</label>
+      <input type="number" class="form-control" id="nbPersonne" placeholder="Nombre de personnes" name="nbPersonne" />
+      <div class="invalid-feedback">Le nombre de personnes est requis</div>
+    </div>
+    <div id="recapPrix"></div>
+  </section>
+  <div class="d-flex justify-content-center gap-3">
+    <button type="button" class="btn btn-primary" id="btn-Validation-Commander">Valider ma commande</button>
   </div>
-  <div class="mb-3">
-    <label for="AdresscomplInput" class="form-label">Complément d'adresse</label>
-    <input type="text" class="form-control" id="AdresscomplInput" placeholder="App, Bât, Esc, Lieu-dit..." name="adresscompl" />
-  </div>
-  <div class="mb-3">
-    <label for="CodepInput" class="form-label">Code postal</label>
-    <input type="text" class="form-control" id="CodepInput" placeholder="75 001" name="code" />
-    <div class="invalid-feedback">Le code postal est requis</div>
-  </div>
-  <div class="mb-3">
-    <label for="CityInput" class="form-label">Ville</label>
-    <input type="text" class="form-control" id="CityInput" placeholder="Ville" name="city" />
-    <div class="invalid-feedback">La ville est requis</div>
-  </div>
-  <div class="mb-3">
-    <label for="DateInput" class="form-label">Date</label>
-    <input type="date" class="form-control" id="DateInput" placeholder="jj/mm/aaaa" value="jj/mm/aaaa" name="Date" />
-  </div>
-  <div class="mb-3">
-    <label for="selectHour" class="form-label">Heure Midi</label>
-    <select class="form-select" id="selectHour" name="Heure">
-      <option>11:30</option>
-      <option>12:00</option>
-      <option>12:30</option>
-      <option>13:00</option>
-      <option>13:30</option>
-      <option>14:00</option>
-      <option>14:30</option>
-    </select>
-  </div>
-  <div class="mb-3">
-    <label for="selectHourS" class="form-label">Heure Soir</label>
-    <select class="form-select" id="selectHourS" name="Heure">
-      <option>18:00</option>
-      <option>18:30</option>
-      <option>19:00</option>
-      <option>19:30</option>
-      <option>20:00</option>
-      <option>20:30</option>
-      <option>21:00</option>
-      <option>21:30</option>
-      <option>22:00</option>
-      <option>22:30</option>
-      <option>23:00</option>
-    </select>
-  </div>
-</section>
-<section>
-  <h2 class="text-center text-primary fw-bold">Votre menu</h2>
-  <div id="chosenMenu"></div>
-</section>
-<section>
-  <h2 class="text-center text-primary fw-bold">Ajouter un produit</h2>
-</section>
-<section>
-  <h2 class="text-center text-primary fw-bold">Votre récapitulatif</h2>
-  <div class="mb-3">
-    <label for="nbPersonne" class="form-label">Nombre de personnes</label>
-    <input type="number" class="form-control" id="nbPersonne" placeholder="Nombre de personnes" name="nbPersonne" />
-    <div class="invalid-feedback">Le nombre de personnes est requis</div>
-  </div>
-  <div id="recapPrix"></div>
-</section>
-<div class="d-flex justify-content-center gap-3">
-  <button type="submit" class="btn btn-primary" id="btn-Validation-Commander">Valider ma commande</button>
-</div>
+</form>

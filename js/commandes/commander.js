@@ -10,8 +10,16 @@
   const inputHeure = document.getElementById("selectHour");
   const inputNbPersonne = document.getElementById("nbPersonne");
   const inputCity = document.getElementById("CityInput");
+  const formCommand = document.getElementById("FormulaireCommand");
 
-  btnCommander.addEventListener("click", validateCommand);
+  // Cahmps à écouter pour enable le bouton valider
+  inputAdress.addEventListener("keyup", validateCommand);
+  inputDate.addEventListener("keyup", validateCommand);
+  inputHeure.addEventListener("change", validateCommand);
+  inputNbPersonne.addEventListener("keyup", validateCommand);
+  inputCity.addEventListener("keyup", validateCommand);
+
+  btnCommander.addEventListener("click", finalValidateCommand);
 
   // Pré-remplissage des infos user
   /*getInfoUser().then((user) => {
@@ -73,8 +81,9 @@
     const dateOK = validateRequired(inputDate);
     const heureOK = validateRequired(inputHeure);
     const nbOK = validateRequired(inputNbPersonne);
+    const cityOK = validateRequired(inputCity);
 
-    if (adressOK && dateOK && heureOK && nbOK) // si les 3 éléments sont ok alors enable btncontact//
+    if (adressOK && dateOK && heureOK && nbOK && cityOK) // si les 3 éléments sont ok alors enable btncontact//
     {
       btnCommander.disabled = false;
       return true;
@@ -82,5 +91,47 @@
       btnCommander.disabled = true;
       return false;
     }
+  }
+
+  function finalValidateCommand() {
+    //Crée un nouvel objet FormData à partir du formulaire contenu dans la variable "formCommand"
+    const dataForm = new FormData(formCommand);
+
+    // Crée un nouvel objet Headers pour définir les en-têtes de la requête HTTP
+    const myHeaders = new Headers();
+    // Ajoute l'en-tête "Content-Type" avec la valeur "application/json"
+    myHeaders.append("Content-Type", "application/json");
+
+    // Convertit les données du formulaire en une chaîne JSON
+    const raw = JSON.stringify({
+      adress: dataForm.get("adress"),
+      date: dataForm.get("date"),
+      hour: dataForm.get("heure"),
+      nb: dataForm.get("nbPersonne"),
+      city: dataForm.get("city"),
+    });
+
+    // Configure les options de la requête HTTP
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(apiUrl + "command", requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          alert("Vos informations ne permettent pas de valider votre commande");
+        }
+      })
+      //excution fléchée pour plusieurs lignes
+      .then((result) => {
+        alert("Commande validée! Vous allez recevoir un mail de confirmation!");
+        document.location.href = "/";
+      })
+      .catch((error) => console.error(error));
   }
 })();
