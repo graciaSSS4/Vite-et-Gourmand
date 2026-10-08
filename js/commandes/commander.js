@@ -45,6 +45,8 @@
     </div> `;
 
   function finalPrice() {
+    // on accepte que des chiffres dans le champs nbpersonne
+    inputNbPersonne.value = inputNbPersonne.value.replace(/\D/g, "");
     // les champs
     const nbPersonne = Number(inputNbPersonne.value);
     const totalMenu = menu.prixPersonne * nbPersonne;

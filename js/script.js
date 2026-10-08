@@ -95,6 +95,7 @@ function showAndHideElementsForRoles() {
   });
 }
 
+// Security : neutralise tous HTML malveillant
 function sanitizeHtml(text) {
   // Créez un élément HTML temporaire de type "div"
   const tempHtml = document.createElement("div");
