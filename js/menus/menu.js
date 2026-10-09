@@ -58,10 +58,10 @@
     const prmaxFiltered = Number(filtMax.value) || Infinity;
     const menusFiltered = menus.filter(
       (menu) =>
-        menu.nbPersonne <= nbFiltered &&
-        menu.prix <= prFiltered &&
-        menu.theme === thFiltered &&
-        menu.regime === regFiltered &&
+        (filtMenu.value === "" || menu.nbPersonne <= nbFiltered) &&
+        (filtPrice.value === "" || menu.prix <= prFiltered) &&
+        (thFiltered === "" || menu.theme === thFiltered) &&
+        (regFiltered === "" || menu.regime === regFiltered) &&
         menu.prix >= prminFiltered &&
         menu.prix <= prmaxFiltered,
     );
