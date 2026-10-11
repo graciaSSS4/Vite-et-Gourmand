@@ -142,3 +142,17 @@ function getInfoUser() {
 // Test for dev
 setCookie("accesstoken", "test", 30);
 setCookie("role", "client", 30);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+  const menuToggle = document.getElementById("navbarSupportedContent");
+
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      const bsCollapse = bootstrap.Collapse.getInstance(menuToggle);
+      if (bsCollapse) {
+        bsCollapse.hide();
+      }
+    });
+  });
+});

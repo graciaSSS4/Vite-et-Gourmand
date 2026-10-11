@@ -85,7 +85,7 @@
     const nbOK = validateRequired(inputNbPersonne);
     const cityOK = validateRequired(inputCity);
 
-    if (adressOK && dateOK && heureOK && nbOK && cityOK) // si les 3 éléments sont ok alors enable btncontact//
+    if (adressOK && dateOK && heureOK && nbOK && cityOK) // si les éléments sont ok alors enable btncontact//
     {
       btnCommander.disabled = false;
       return true;
