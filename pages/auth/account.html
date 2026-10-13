@@ -5,7 +5,7 @@
 </div>
 
 <div class="container">
-  <form>
+  <form id="FormulaireAccount">
     <div class="mb-3">
       <label for="nomInput" class="form-label">Nom</label>
       <input type="text" class="form-control" id="nomInput" placeholder="Votre nom" value="John" name="nom" />
@@ -31,12 +31,27 @@
       <input type="text" class="form-control" id="cityInput" placeholder="Ville" name="city" />
     </div>
     <div class="d-flex justify-content-center gap-3">
-      <button type="submit" class="btn btn-primary">Modifer vos informations</button>
-      <button type="button" class="btn btn-danger">Supprimer mon compte</button>
+      <button type="button" class="btn btn-primary" id="btn-Modify">Modifer vos informations</button>
+      <button type="button" class="btn btn-danger" id="btn-Delete">Supprimer mon compte</button>
     </div>
   </form>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Launch static backdrop modal</button>
 
-  <div class="text-center text-primary pt-3">
-    <a href="/editPassword">Cliquez ici pour changer votre mot de passe</a>
+  <!-- Modal Delete -->
+  <div class="modal fade" id="DeleteAccountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DeleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DeleteAccountModalLabel">Êtes-vous sûr de vouloir supprimer ce compte ?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Lorsque vous supprimer votre compte, vous ne pourrez plus vous connecter.</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-danger">Confirmer</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
