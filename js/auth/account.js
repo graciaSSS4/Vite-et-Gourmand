@@ -1,6 +1,5 @@
 (function () {
   const btnModify = document.getElementById("btn-Modify");
-  const btnDelete = document.getElementById("btn-Delete");
   const inputNom = document.getElementById("nomInput");
   const inputPrenom = document.getElementById("prenomInput");
   const inputAdress = document.getElementById("adressInput");
@@ -8,6 +7,7 @@
   const inputCode = document.getElementById("codepInput");
   const inputCity = document.getElementById("cityInput");
   const formAccount = document.getElementById("FormulaireAccount");
+  const btnConfDelete = document.getElementById("btn-ConfirmedDelete");
 
   // Cahmps à écouter pour enable le bouton valider
   inputNom.addEventListener("keyup", validateModify);
@@ -112,7 +112,7 @@
 
   // supprimer le compte
 
-  btnDelete.addEventListener("click", deleteAccount);
+  btnConfDelete.addEventListener("click", deleteAccount);
 
   function deleteAccount() {
     //Crée un nouvel objet FormData à partir du formulaire contenu dans la variable "formInscription"
@@ -145,7 +145,7 @@
         if (response.ok) {
           return response.json();
         } else {
-          alert("Êtes-vous sûr de vouloir supprimer votre compte !");
+          alert("La suppression de votre compte a échoué !");
         }
       })
 
