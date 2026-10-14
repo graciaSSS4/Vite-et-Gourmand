@@ -223,7 +223,7 @@
 
         //placer ce token en cookie
         setCookie(roleCookieName, result.roles[0], 30);
-        window.location.replace("/");
+        window.location.replace("/menu");
       })
       .catch((error) => console.error(error));
   }
