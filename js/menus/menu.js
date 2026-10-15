@@ -14,7 +14,7 @@
   });
   menusList.innerHTML = content;
 
-  //
+  //Génération d'un card
   function getMenu(menu, index) {
     const title = sanitizeHtml(menu.title);
     const text = sanitizeHtml(menu.text);

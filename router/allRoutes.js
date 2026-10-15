@@ -9,7 +9,7 @@ export const allRoutes = [
   new Route("/signin_signup", "Inscription", "pages/auth/signin_signup.html", [], "/js/auth/signin_signup.js"), // rajouter ["disconnected"]
   new Route("/account", "Mon compte", "pages/auth/account.html", []),
   new Route("/editPassword", "Changement de mot de passe", "pages/auth/editPassword.html", []),
-  new Route("/allcommand", "Vos commandes", "pages/commandes/allcommand.html", []),
+  new Route("/allcommand", "Vos commandes", "pages/commandes/allcommand.html", [], "/js/commandes/allcommand.js"),
   new Route("/commander", "Commander", "pages/commandes/commander.html", [], "/js/commandes/commander.js"),
   new Route("/mlegals", "Mentions légales", "pages/legal/legalment.html", []),
   new Route("/cgv", "CGV", "pages/legal/cgv.html", []),
