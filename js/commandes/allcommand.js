@@ -22,8 +22,9 @@
           <h5 class="card-title">${title}</h5>
           <span class="card-text fw-bold badge ${statutColor}">Statut : ${statut}</span>
           <p class="fw-bold">${allcommand.nbPersonne} pers. min | ${allcommand.prix} €</p>
-          <a href="detailmenu?onlyMenu=${index}" class="btn btn-primary mt-auto">Placeholder to modify</a>
-        </div>
+           ${statut === "en attente de validation" ? `<button class= "btn btn-danger mb-3">Annuler</button>` : ""}
+          ${statut === "en attente de validation" ? `<button class= "btn btn-warning ">Modifier</button>` : ""}
+           </div>
       </div>
     </div> `;
   }
@@ -76,6 +77,7 @@
         return "bg-success text-dark";
       case "annulé":
         return "bg-danger text-dark";
+      case "en attente de validation":
       case "modifié":
       case "en cours de livraison":
       case "en attente du retour matériel":

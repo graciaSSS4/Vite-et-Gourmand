@@ -14,4 +14,12 @@ const allcommands = [
     image: "../images_VandG/entrecote-plate.jpg",
     statut: "livré",
   },
+
+  {
+    title: "Menu de Pâques",
+    nbPersonne: 8,
+    prix: 80,
+    image: "../images_VandG/fish-plate.jpg",
+    statut: "en attente de validation",
+  },
 ];
