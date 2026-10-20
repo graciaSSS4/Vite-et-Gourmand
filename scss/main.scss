@@ -125,3 +125,10 @@ p {
     padding: 10px;
   }
 }
+
+.rating .rating input .rating label .rating label::before {
+  content: "★";
+}
+.rating input::checked ~ label {
+  color:;
+}

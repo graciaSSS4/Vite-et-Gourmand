@@ -24,6 +24,7 @@
           <p class="fw-bold">${allcommand.nbPersonne} pers. min | ${allcommand.prix} €</p>
            ${statut === "en attente de validation" ? `<button class= "btn btn-danger mb-3">Annuler</button>` : ""}
           ${statut === "en attente de validation" ? `<button class= "btn btn-warning ">Modifier</button>` : ""}
+           ${statut === "terminé" ? `<button class= "btn btn-success ">Donner mon avis</button>` : ""}
            </div>
       </div>
     </div> `;

@@ -22,4 +22,12 @@ const allcommands = [
     image: "../images_VandG/fish-plate.jpg",
     statut: "en attente de validation",
   },
+
+  {
+    title: "Menu de Team Building",
+    nbPersonne: 130,
+    prix: 180,
+    image: "../images_VandG/multiple-plate.jpg",
+    statut: "terminé",
+  },
 ];

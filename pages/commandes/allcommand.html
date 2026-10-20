@@ -6,3 +6,37 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-lg-3" id="allCommands"></div>
 </div>
+
+<!-- Modal Review-->
+<div
+  class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+  id="OrderReviewModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="OrderReviewModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="OrderReviewModalLabel">Votre avis est important pour nous !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulaire de review the order -->
+        <form>
+          <div class="rating"><input type="radio" id="star5" name="noteReview" value="5" /><label for="star5" aria-label="5 étoiles"></label></div>
+          <div class="mb-3">
+            <label for="DescriptionInput" class="form-label">Description</label>
+            <textarea class="form-control" id="DescriptionInput" placeholder="Dites-nous en plus!"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Envoyer</button>
+            <button type="button" class="btn btn-danger" id="btn-ConfirmedDelete">Annuler</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
