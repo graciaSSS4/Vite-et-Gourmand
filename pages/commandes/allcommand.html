@@ -8,16 +8,8 @@
 </div>
 
 <!-- Modal Review-->
-<div
-  class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-  id="OrderReviewModal"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="OrderReviewModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
+<div class="modal fade" id="OrderReviewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="OrderReviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="OrderReviewModalLabel">Votre avis est important pour nous !</h5>
@@ -26,14 +18,20 @@
       <div class="modal-body">
         <!-- Formulaire de review the order -->
         <form>
-          <div class="rating"><input type="radio" id="star5" name="noteReview" value="5" /><label for="star5" aria-label="5 étoiles"></label></div>
+          <div class="rating">
+            <input type="radio" id="star5" name="noteReview" value="5" /><label for="star5" aria-label="5 étoiles"></label>
+            <input type="radio" id="star4" name="noteReview" value="4" /><label for="star4" aria-label="4 étoiles"></label>
+            <input type="radio" id="star3" name="noteReview" value="3" /><label for="star3" aria-label="3 étoiles"></label>
+            <input type="radio" id="star2" name="noteReview" value="2" /><label for="star2" aria-label="2 étoiles"></label>
+            <input type="radio" id="star1" name="noteReview" value="1" /><label for="star1" aria-label="1 étoiles"></label>
+          </div>
           <div class="mb-3">
             <label for="DescriptionInput" class="form-label">Description</label>
             <textarea class="form-control" id="DescriptionInput" placeholder="Dites-nous en plus!"></textarea>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Envoyer</button>
-            <button type="button" class="btn btn-danger" id="btn-ConfirmedDelete">Annuler</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-secondary">Envoyer</button>
           </div>
         </form>
       </div>

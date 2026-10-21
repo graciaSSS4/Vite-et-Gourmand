@@ -12094,4 +12094,37 @@ p {
   display: block;
   color: #292222;
   padding: 10px;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse; /*inverse l'ordre */
+  justify-content: flex-end;
+}
+
+/*masquer les boutons radio natifs */
+.rating input {
+  display: none;
+}
+
+/*style des étoiles vides */
+.rating label {
+  font-size: 2.5rem;
+  color: #ccc;
+  cursor: pointer;
+  padding: 0 5px;
+  transition: color 0.2s ease;
+}
+
+.rating label::before {
+  content: "★";
+}
+
+.rating input:checked ~ label {
+  color: #ffa41c;
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #f39c12;
 }/*# sourceMappingURL=main.css.map */
