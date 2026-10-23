@@ -153,3 +153,8 @@ p {
 .rating label:hover ~ label {
   color: $secondary;
 }
+
+.hours {
+  display: flex;
+  row-gap: 20px;
+}

@@ -12127,4 +12127,9 @@ p {
 .rating label:hover,
 .rating label:hover ~ label {
   color: #f39c12;
+}
+
+.hours {
+  display: flex;
+  row-gap: 20px;
 }/*# sourceMappingURL=main.css.map */

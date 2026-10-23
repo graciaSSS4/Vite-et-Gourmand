@@ -24,7 +24,7 @@
         class="nav-link"
         id="pills-connexion-tab"
         data-bs-toggle="pill"
-        data-bs-target="#pills-connexion"
+        data-bs-target="#pills-commande"
         type="button"
         role="tab"
         aria-controls="pills-connexion"
@@ -167,94 +167,29 @@
               <div class="modal-body">
                 <!-- Formulaire d'editHours -->
                 <form id="formulaireEditHours">
-                  <div class="editHours">
-                    <div class="container">
-                      <div class="mb-3">
-                        <label for="LunInput" class="form-label">Titre du menu</label>
-                        <input type="text" class="form-control" id="titleInput" placeholder="Titre du menu" name="title" />
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="selectTheme" class="form-label">Thème</label>
-                        <select class="form-select" id="selectTheme" name="theme">
-                          <option>Noël</option>
-                          <option>Pâques</option>
-                          <option>Classique</option>
-                          <option>Événement</option>
-                        </select>
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="descriptionInput" class="form-label">Description</label>
-                        <textarea class="form-control" id="descriptionInput" placeholder="Description (présentation du menu)" name="text"></textarea>
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="pricePersInput" class="form-label">Prix par personne</label>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="pricePersInput" placeholder="Prix / pers." name="pricepers" />
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="nbPersMinInput" class="form-label">Nombre de personnes minimum</label>
-                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="nbPersMinInput" placeholder="Nb pers minimum." name="nbPersMin" />
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
+                  <fieldset>
+                    <legend>Lundi</legend>
+                    <div class="hours">
+                      <input type="time" id="LunBeginInput" name="lunBegin" min="17:00" aria-label="LOuverture" required />
 
-                      <div class="mb-3">
-                        <label for="plateInput" class="form-label">Plats du menu</label>
-                        <input type="text" class="form-control" id="plateInput" placeholder="Plats (entrée / plat / dessert)" name="plate" />
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="allergeneInput" class="form-label">Allergènes</label>
-                        <input type="text" class="form-control" id="allergeneInput" placeholder="Allergènes" name="allergene" />
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="conditionInput" class="form-label">Conditions du menu</label>
-                        <textarea type="text" class="form-control" id="conditionInput" placeholder="Commande possible 3 jours par semaine." name="condition"></textarea>
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="stockInput" class="form-label">Stock disponible pour ce menu</label>
-                        <input type="text" class="form-control" id="stockInput" placeholder="5 commandes possible pour ce menu." name="stock" />
-                        <div class="invalid-feedback">Ce champ est requis</div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary" disabled>Enregistrer</button>
-                      </div>
+                      <input type="time" id="LunEndInput" name="lunEnd" max="23:00" aria-label="LFermeture" required />
                     </div>
-                  </div>
+                  </fieldset>
                 </form>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Tabs command -->
-        <div class="tab-pane fade" id="pills-connexion" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
-          <div class="container">
-            <form id="signinForm">
-              <div class="mb-3">
-                <label for="EmailSigninInput" class="form-label">Email</label>
-                <input type="email" class="form-control" id="EmailSigninInput" placeholder="test@mail.fr" name="Email" />
-              </div>
-              <div class="mb-3">
-                <label for="PasswordSigninInput" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="PasswordSigninInput" name="password" />
-              </div>
-              <div class="invalid-feedback">L'adresse mail et le mot de passe ne correspondent pas</div>
-              <div class="text-center">
-                <button type="button" class="btn btn-primary" id="btnSingin">Connexion</button>
-              </div>
-            </form>
-
-            <div class="text-center text-primary pt-3">
-              <a href="/forgotPassword">Mot de passe oublié ?</a>
-            </div>
-          </div>
-        </div>
+    <!-- Tabs command -->
+    <div class="tab-pane fade" id="pills-commande" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
+      <div class="container">
+        <section>
+          <h2 class="text-center text-primary fw-bold">Commandes Dashboard</h2>
+          <div id="dashCommand"></div>
+        </section>
       </div>
     </div>
   </div>
