@@ -3,82 +3,256 @@
     <h1>Espace employé</h1>
   </div>
 </div>
-<div class="container"></div>
-<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link active"
-      id="pills-inscription-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-inscription"
-      type="button"
-      role="tab"
-      aria-controls="pills-inscription"
-      aria-selected="true"
-    >
-      Gestion de Vite & Gourmand
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link"
-      id="pills-connexion-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-connexion"
-      type="button"
-      role="tab"
-      aria-controls="pills-connexion"
-      aria-selected="false"
-    >
-      Commandes
-    </button>
-  </li>
-</ul>
-<div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-inscription" role="tabpanel" aria-labelledby="pills-inscription-tab" tabindex="0">
-    <div class="container">
-      <section>
-        <h2 class="text-center text-primary fw-bold">Modifier ou Supprimer plats, menus et horaires</h2>
-        <div id="manageMenu"></div>
-      </section>
+<div class="container">
+  <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="pills-inscription-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-inscription"
+        type="button"
+        role="tab"
+        aria-controls="pills-inscription"
+        aria-selected="true"
+      >
+        Gestion de Vite & Gourmand
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="pills-connexion-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-connexion"
+        type="button"
+        role="tab"
+        aria-controls="pills-connexion"
+        aria-selected="false"
+      >
+        Commandes
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-inscription" role="tabpanel" aria-labelledby="pills-inscription-tab" tabindex="0">
+      <div class="container">
+        <section>
+          <h2 class="text-center text-primary fw-bold">Modifier ou Supprimer plats, menus et horaires</h2>
+          <div id="manageMenu"></div>
+        </section>
 
-      <!--les modals devront être insérées ici-->
-      <!-- Modal Delete -->
-      <div class="modal fade" id="DeleteManageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DeleteManageModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="DeleteManageModalLabel">Êtes-vous sûr de vouloir supprimer ce menu ?</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">Lorsque vous supprimer ce menu, vous devrez le recréer !</div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-              <button type="button" class="btn btn-danger" id="btn-ConfirmedDelete">Confirmer</button>
+        <section>
+          <h2 class="text-center text-primary fw-bold">Modification d'horaires</h2>
+          <div id="manageHours"></div>
+          <div class="text-center">
+            <button type="button" class="btn btn-primary" id="btnHours" data-bs-toggle="modal" data-bs-target="#EditHoursModal">
+              <i class="bi bi-pencil-square"></i> Modifier les horaires
+            </button>
+          </div>
+        </section>
+
+        <!--les modals devront être insérées ici-->
+        <!-- Modal Delete -->
+        <div class="modal fade" id="DeleteManageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DeleteManageModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="DeleteManageModalLabel">Êtes-vous sûr de vouloir supprimer ce menu ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">Lorsque vous supprimer ce menu, vous devrez le recréer !</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-danger" id="btn-ConfirmedDelete">Confirmer</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <!-- Modal EditMenu-->
+        <div class="modal fade" id="EditManageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="EditManageModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="EditManageModalLabel">Configuration de menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Formulaire d'editMenu -->
+                <form id="formulaireEditMenu">
+                  <div class="editMenu">
+                    <div class="container">
+                      <div class="mb-3">
+                        <label for="titleInput" class="form-label">Titre du menu</label>
+                        <input type="text" class="form-control" id="titleInput" placeholder="Titre du menu" name="title" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="selectTheme" class="form-label">Thème</label>
+                        <select class="form-select" id="selectTheme" name="theme">
+                          <option>Noël</option>
+                          <option>Pâques</option>
+                          <option>Classique</option>
+                          <option>Événement</option>
+                        </select>
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="descriptionInput" class="form-label">Description</label>
+                        <textarea class="form-control" id="descriptionInput" placeholder="Description (présentation du menu)" name="text"></textarea>
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="pricePersInput" class="form-label">Prix par personne</label>
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="pricePersInput" placeholder="Prix / pers." name="pricepers" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="nbPersMinInput" class="form-label">Nombre de personnes minimum</label>
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="nbPersMinInput" placeholder="Nb pers minimum." name="nbPersMin" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="selectRegime" class="form-label">Régime alimentaire</label>
+                        <select class="form-select" id="selectRegime" name="regime">
+                          <option>Classique</option>
+                          <option>Vegan</option>
+                          <option>Sans Gluten</option>
+                          <option>Végétarien</option>
+                          <option>Halal</option>
+                          <option>Sans lactose</option>
+                        </select>
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="plateInput" class="form-label">Plats du menu</label>
+                        <input type="text" class="form-control" id="plateInput" placeholder="Plats (entrée / plat / dessert)" name="plate" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="allergeneInput" class="form-label">Allergènes</label>
+                        <input type="text" class="form-control" id="allergeneInput" placeholder="Allergènes" name="allergene" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="conditionInput" class="form-label">Conditions du menu</label>
+                        <textarea type="text" class="form-control" id="conditionInput" placeholder="Commande possible 3 jours par semaine." name="condition"></textarea>
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="stockInput" class="form-label">Stock disponible pour ce menu</label>
+                        <input type="text" class="form-control" id="stockInput" placeholder="5 commandes possible pour ce menu." name="stock" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" disabled>Enregistrer</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="tab-pane fade" id="pills-connexion" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
-        <div class="container">
-          <form id="signinForm">
-            <div class="mb-3">
-              <label for="EmailSigninInput" class="form-label">Email</label>
-              <input type="email" class="form-control" id="EmailSigninInput" placeholder="test@mail.fr" name="Email" />
-            </div>
-            <div class="mb-3">
-              <label for="PasswordSigninInput" class="form-label">Mot de passe</label>
-              <input type="password" class="form-control" id="PasswordSigninInput" name="password" />
-            </div>
-            <div class="invalid-feedback">L'adresse mail et le mot de passe ne correspondent pas</div>
-            <div class="text-center">
-              <button type="button" class="btn btn-primary" id="btnSingin">Connexion</button>
-            </div>
-          </form>
+        <!-- Modal EditHours-->
+        <div class="modal fade" id="EditHoursModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="EditHoursModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="EditHoursModalLabel">Modifier les horaires d'ouverture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Formulaire d'editHours -->
+                <form id="formulaireEditHours">
+                  <div class="editHours">
+                    <div class="container">
+                      <div class="mb-3">
+                        <label for="LunInput" class="form-label">Titre du menu</label>
+                        <input type="text" class="form-control" id="titleInput" placeholder="Titre du menu" name="title" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="selectTheme" class="form-label">Thème</label>
+                        <select class="form-select" id="selectTheme" name="theme">
+                          <option>Noël</option>
+                          <option>Pâques</option>
+                          <option>Classique</option>
+                          <option>Événement</option>
+                        </select>
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="descriptionInput" class="form-label">Description</label>
+                        <textarea class="form-control" id="descriptionInput" placeholder="Description (présentation du menu)" name="text"></textarea>
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="pricePersInput" class="form-label">Prix par personne</label>
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="pricePersInput" placeholder="Prix / pers." name="pricepers" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="nbPersMinInput" class="form-label">Nombre de personnes minimum</label>
+                        <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-control" id="nbPersMinInput" placeholder="Nb pers minimum." name="nbPersMin" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
 
-          <div class="text-center text-primary pt-3">
-            <a href="/forgotPassword">Mot de passe oublié ?</a>
+                      <div class="mb-3">
+                        <label for="plateInput" class="form-label">Plats du menu</label>
+                        <input type="text" class="form-control" id="plateInput" placeholder="Plats (entrée / plat / dessert)" name="plate" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="allergeneInput" class="form-label">Allergènes</label>
+                        <input type="text" class="form-control" id="allergeneInput" placeholder="Allergènes" name="allergene" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="conditionInput" class="form-label">Conditions du menu</label>
+                        <textarea type="text" class="form-control" id="conditionInput" placeholder="Commande possible 3 jours par semaine." name="condition"></textarea>
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="stockInput" class="form-label">Stock disponible pour ce menu</label>
+                        <input type="text" class="form-control" id="stockInput" placeholder="5 commandes possible pour ce menu." name="stock" />
+                        <div class="invalid-feedback">Ce champ est requis</div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" disabled>Enregistrer</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs command -->
+        <div class="tab-pane fade" id="pills-connexion" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
+          <div class="container">
+            <form id="signinForm">
+              <div class="mb-3">
+                <label for="EmailSigninInput" class="form-label">Email</label>
+                <input type="email" class="form-control" id="EmailSigninInput" placeholder="test@mail.fr" name="Email" />
+              </div>
+              <div class="mb-3">
+                <label for="PasswordSigninInput" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="PasswordSigninInput" name="password" />
+              </div>
+              <div class="invalid-feedback">L'adresse mail et le mot de passe ne correspondent pas</div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary" id="btnSingin">Connexion</button>
+              </div>
+            </form>
+
+            <div class="text-center text-primary pt-3">
+              <a href="/forgotPassword">Mot de passe oublié ?</a>
+            </div>
           </div>
         </div>
       </div>

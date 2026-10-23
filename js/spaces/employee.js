@@ -22,11 +22,11 @@
         <img src="${image}" class="card-img-top" alt="${title}" />
         <div class="card-body d-flex flex-column text-center">
           <h5 class="card-title">${title}</h5>
-          
           <p class="card-text text-justify">Thème : ${theme}  · ${regime}</p>
 <p class="card-text text-justify">Stock : ${stock}  </p>
           <p class="fw-bold">${menu.nbPersonne} pers. min | ${menu.prix} €</p>
-          <a ${index} class="btn btn-warning mt-auto"data-bs-toggle="modal" data-bs-target="#EditManageModal">Modifier</a>
+          <a ${index} class="btn btn-warning mt-auto"data-bs-toggle="modal" data-bs-target="#EditManageModal">Modifier
+          <i class="bi bi-pencil-square"></i></a>
           <a ${index} class="btn btn-danger mt-auto" data-bs-toggle="modal" data-bs-target="#DeleteManageModal">Supprimer</a>
         </div>
       </div>
