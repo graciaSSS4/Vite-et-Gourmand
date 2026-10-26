@@ -10,10 +10,10 @@
         class="nav-link active"
         id="pills-inscription-tab"
         data-bs-toggle="pill"
-        data-bs-target="#pills-inscription"
+        data-bs-target="#pills-gestion"
         type="button"
         role="tab"
-        aria-controls="pills-inscription"
+        aria-controls="pills-gestion"
         aria-selected="true"
       >
         Gestion de Vite & Gourmand
@@ -27,15 +27,29 @@
         data-bs-target="#pills-commande"
         type="button"
         role="tab"
-        aria-controls="pills-connexion"
+        aria-controls="pills-commande"
         aria-selected="false"
       >
         Commandes
       </button>
     </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="pills-connexion-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-review"
+        type="button"
+        role="tab"
+        aria-controls="pills-review"
+        aria-selected="false"
+      >
+        Avis
+      </button>
+    </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-inscription" role="tabpanel" aria-labelledby="pills-inscription-tab" tabindex="0">
+    <div class="tab-pane fade show active" id="pills-gestion" role="tabpanel" aria-labelledby="pills-gestion-tab" tabindex="0">
       <div class="container">
         <section>
           <h2 class="text-center text-primary fw-bold">Modifier ou Supprimer plats, menus et horaires</h2>
@@ -184,7 +198,7 @@
     </div>
 
     <!-- Tabs command -->
-    <div class="tab-pane fade" id="pills-commande" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
+    <div class="tab-pane fade" id="pills-commande" role="tabpanel" aria-labelledby="pills-commande-tab" tabindex="0">
       <div class="container">
         <p>
           <!--filtre collapse--->
@@ -221,7 +235,7 @@
       </div>
     </div>
     <!-- Tabs review -->
-    <div class="tab-pane fade" id="pills-commande" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
+    <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab" tabindex="0">
       <div class="container"></div>
     </div>
   </div>
