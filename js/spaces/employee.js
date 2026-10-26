@@ -23,7 +23,7 @@
         <div class="card-body d-flex flex-column text-center">
           <h5 class="card-title">${title}</h5>
           <p class="card-text text-justify">Thème : ${theme}  · ${regime}</p>
-<p class="card-text text-justify">Stock : ${stock}  </p>
+          <p class="card-text text-justify">Stock : ${stock}  </p>
           <p class="fw-bold">${menu.nbPersonne} pers. min | ${menu.prix} €</p>
           <a ${index} class="btn btn-warning mt-auto"data-bs-toggle="modal" data-bs-target="#EditManageModal">Modifier
           <i class="bi bi-pencil-square"></i></a>
@@ -36,11 +36,13 @@
   //dashCommand
   const manageCommandList = document.getElementById("dashCommand");
   let commandContent = "";
+  const filtStatut = document.getElementById("selectStatut");
+
   // Cars' chain assembly
   allcommands.forEach((allcommand, index) => {
     commandContent += mgetCommand(allcommand, index);
   });
-  console.log(commandContent);
+
   manageCommandList.innerHTML = commandContent;
 
   //Génération d'un card
@@ -48,6 +50,7 @@
     const title = sanitizeHtml(allcommand.title);
     const image = sanitizeHtml(allcommand.image);
     const statut = sanitizeHtml(allcommand.statut);
+    const client = sanitizeHtml(allcommand.client);
     const statutColor = getStatutColor(allcommand.statut);
 
     return ` <div class="col p-3">
@@ -56,7 +59,7 @@
         <div class="card-body d-flex flex-column text-center">
           <h5 class="card-title">${title}</h5>
           <span class="card-text fw-bold badge ${statutColor}">Statut : ${statut}</span>
-          <p class="fw-bold">${allcommand.nbPersonne} pers. min | ${allcommand.prix} €</p>
+          <p class="fw-bold">${allcommand.nbPersonne} pers. | ${allcommand.prix} € | Client :${client}  </p>
            ${statut === "en attente de validation" ? `<button class= "btn btn-danger mb-3">Annuler</button>` : ""}
           ${statut === "en attente de validation" ? `<button class= "btn btn-warning ">Modifier</button>` : ""}
            ${statut === "terminé" ? `<button class= "btn btn-success" data-bs-toggle="modal" data-bs-target="#OrderReviewModal">Donner mon avis</button>` : ""}
@@ -64,6 +67,27 @@
       </div>
     </div> `;
   }
+  // La boucle d'affichage
+  function statutMenus(liste) {
+    let filtContent = "";
+    liste.forEach((allcommand, index) => {
+      filtContent += mgetCommand(allcommand, index);
+    });
+    manageCommandList.innerHTML = filtContent;
+  }
+
+  // Function permettant d'appliquer  le filtre statut
+  function aFilter() {
+    const stFiltered = filtStatut.value;
+
+    // les || affiche tout de même les menus si aucune valeur n'est inscrite dans le filtre
+
+    const statutFiltered = allcommands.filter((allcommand) => stFiltered === "" || allcommand.statut === stFiltered);
+
+    // Au chargement : on affiche les menus filtrés
+    statutMenus(statutFiltered);
+  }
+  filtStatut.addEventListener("change", aFilter);
 
   function getStatutColor(statut) {
     switch (statut) {

@@ -186,11 +186,43 @@
     <!-- Tabs command -->
     <div class="tab-pane fade" id="pills-commande" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
       <div class="container">
+        <p>
+          <!--filtre collapse--->
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
+            Filtres
+          </button>
+        </p>
+        <div class="collapse" id="collapseFilters">
+          <div class="card card-body">
+            <div class="mb-3">
+              <label id="menuFilter" for="selectStatut" class="form-label">Statut des commandes</label>
+              <select class="form-select" id="selectStatut" name="statut">
+                <option value="">Tous</option>
+                <option>en attente de validation</option>
+                <option>en préparation</option>
+                <option>modifié</option>
+                <option>accepté</option>
+                <option>en cours de livraison</option>
+                <option>en attente du retour matériel</option>
+                <option>terminé</option>
+                <option>livré</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="selectClient" class="form-label">Client</label>
+            <input type="text" id="selectClient" placeholder="Rechercher un client" />
+          </div>
+        </div>
         <section>
           <h2 class="text-center text-primary fw-bold">Commandes Dashboard</h2>
           <div id="dashCommand"></div>
         </section>
       </div>
+    </div>
+    <!-- Tabs review -->
+    <div class="tab-pane fade" id="pills-commande" role="tabpanel" aria-labelledby="pills-connexion-tab" tabindex="0">
+      <div class="container"></div>
     </div>
   </div>
 </div>

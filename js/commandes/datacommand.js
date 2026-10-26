@@ -6,6 +6,7 @@ const allcommands = [
     prix: 150,
     image: "../images_VandG/chicken-plate.jpg",
     statut: "accepté",
+    client: "Traoré",
   },
   {
     title: "Menu d'évènement",
@@ -13,6 +14,7 @@ const allcommands = [
     prix: 100,
     image: "../images_VandG/entrecote-plate.jpg",
     statut: "livré",
+    client: "Kombele",
   },
 
   {
@@ -21,6 +23,7 @@ const allcommands = [
     prix: 80,
     image: "../images_VandG/fish-plate.jpg",
     statut: "en attente de validation",
+    client: "Ngbonga",
   },
 
   {
@@ -29,5 +32,6 @@ const allcommands = [
     prix: 180,
     image: "../images_VandG/multiple-plate.jpg",
     statut: "terminé",
+    client: "Kwangang",
   },
 ];
