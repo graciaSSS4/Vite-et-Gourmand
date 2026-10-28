@@ -98,49 +98,37 @@
 
   const reviewCommandList = document.getElementById("dashReview");
   let reviewContent = "";
-  const filtStatut = document.getElementById("selectStatut");
-  const filtClient = document.getElementById("selectClient");
 
   // Cars' chain assembly
   allreviews.forEach((allreview, index) => {
-    reviewContent += mgetCommand(allreview, index);
+    reviewContent += mgetReview(allreview, index);
   });
 
   reviewCommandList.innerHTML = reviewContent;
 
   //Génération d'un card
-  function mgetReview(allcommand, index) {
-    const client = sanitizeHtml(allcommand.client);
-    const note = sanitizeHtml(allcommand.note);
-    const commentaire = sanitizeHtml(allcommand.commentaire);
-    const statut = sanitizeHtml(allcommand.statut);
+  function mgetReview(allreview, index) {
+    const client = sanitizeHtml(allreview.client);
+    const note = sanitizeHtml(allreview.note);
+    const commentaire = sanitizeHtml(allreview.commentaire);
+    const statut = sanitizeHtml(allreview.statut);
 
     return ` <div class="col p-3">
         <div class="card menu-card h-100">
         <div class="card-body d-flex flex-column text-center">
-          <h5 class="card-title">${client}</h5>
-          <span class="card-text fw-bold badge ${statutColor}">Statut : ${statut}</span>
-          <p class="fw-bold">${allcommand.nbPersonne} pers. | ${allcommand.prix} € | Client : ${client}  </p>
-           ${statut === "en attente de validation" ? `<button class= "btn btn-danger mb-3">Annuler</button>` : ""}
-          ${statut === "en attente de validation" ? `<button class= "btn btn-warning ">Modifier</button>` : ""}
-           ${statut === "terminé" ? `<button class= "btn btn-success" data-bs-toggle="modal" data-bs-target="#OrderReviewModal">Donner mon avis</button>` : ""}
-           </div>
+          <h5 class="card-text text-justify fw-bold">${client}</h5>
+          <p class="card-text text-justify "> ${note}</p>
+          <p class="card-text text-justify">${commentaire}</p>
+        <div class="d-flex gap-4 flex-fill"> 
+        ${statut === "en attente" ? `<button class= "btn btn-danger mb-3">Refuser</button>` : ""}
+         ${statut === "en attente" ? `<button class= "btn btn-success mb-3">Valider</button>` : ""} 
+         </div>
+          ${statut === "refusé" ? `<span class=" text-white bg-danger  ">Refusé</span>` : ""} 
+          ${statut === "validé" ? `<span class=" text-white bg-success  ">Validé</span>` : ""} 
+          </div>
       </div>
     </div> `;
   }
-  // La boucle d'affichage
-  function reviewMenus(liste) {
-    let reviewContent = "";
-    liste.forEach((allcommand, index) => {
-      reviewContent += mgetReview(allcommand, index);
-    });
-    reviewCommandList.innerHTML = filtContent;
-  }
-  // Au chargement : on affiche les commandes filtrés
-  reviewMenus(statutFiltered);
-
-  filtStatut.addEventListener("change", aFilter);
-  filtClient.addEventListener("keyup", aFilter);
 
   function getStatutColor(statut) {
     switch (statut) {
